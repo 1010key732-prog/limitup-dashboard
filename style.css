@@ -222,8 +222,8 @@ html, body {
   color: var(--text-sub);
 }
 
-/* 涨停原因列 */
-.reason-cell { color: var(--text); max-width: 160px; white-space: normal; }
+/* 涨停原因列（题材串较长，允许换行，如「端侧AI+机器人+通信模组」） */
+.reason-cell { color: var(--text); max-width: 240px; min-width: 140px; white-space: normal; line-height: 1.45; }
 
 /* 按行业/涨停原因排序时，相同行业成块：每个新分组首行加高亮分隔线 */
 .data-table tbody tr.group-start td { border-top: 2px solid var(--accent); }

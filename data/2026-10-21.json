@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
   "source": "eastmoney",
-  "fetchTime": "2026-10-21T08:04:14.154Z",
+  "fetchTime": "2026-10-21T08:13:31.643Z",
   "total": 50,
   "summary": {
     "total": 50,
@@ -29,7 +29,7 @@
       "fundRatio": 0.0263,
       "zbc": 0,
       "industry": "通信设备",
-      "reason": "通信设备"
+      "reason": "端侧AI+无线模组+机器人应用+国资划转"
     },
     {
       "code": "002347",
@@ -49,7 +49,7 @@
       "fundRatio": 0.0331,
       "zbc": 0,
       "industry": "通用设备",
-      "reason": "通用设备"
+      "reason": "工业机器人+冶金装备"
     },
     {
       "code": "002724",
@@ -69,7 +69,7 @@
       "fundRatio": 0.0347,
       "zbc": 0,
       "industry": "照明设备",
-      "reason": "照明设备"
+      "reason": "专业照明+AI照明+军工+“羊”字辈"
     },
     {
       "code": "002835",
@@ -89,7 +89,7 @@
       "fundRatio": 0.0406,
       "zbc": 1,
       "industry": "计算机设",
-      "reason": "计算机设"
+      "reason": "视频监控+人工智能安防+海外业务+AI ISP"
     },
     {
       "code": "600178",
@@ -109,7 +109,7 @@
       "fundRatio": 0.0251,
       "zbc": 1,
       "industry": "汽车零部",
-      "reason": "汽车零部"
+      "reason": "飞行汽车+增程器+汽车动力"
     },
     {
       "code": "603278",
@@ -129,7 +129,7 @@
       "fundRatio": 0.0889,
       "zbc": 0,
       "industry": "通用设备",
-      "reason": "通用设备"
+      "reason": "人形机器人+橡胶骨架材料+全球销售"
     },
     {
       "code": "600293",
@@ -149,7 +149,7 @@
       "fundRatio": 0.0905,
       "zbc": 0,
       "industry": "玻璃玻纤",
-      "reason": "玻璃玻纤"
+      "reason": "重大重组+锂电电解液+汽车电子玻璃"
     },
     {
       "code": "002076",
@@ -169,7 +169,7 @@
       "fundRatio": 0.0542,
       "zbc": 0,
       "industry": "照明设备",
-      "reason": "照明设备"
+      "reason": "数据要素+LED封装+量子科技+信息安全"
     },
     {
       "code": "603332",
@@ -189,7 +189,7 @@
       "fundRatio": 0.0211,
       "zbc": 0,
       "industry": "化学纤维",
-      "reason": "化学纤维"
+      "reason": "三季报增长+差别化涤纶长丝+仿皮草纤维"
     },
     {
       "code": "001239",
@@ -209,7 +209,7 @@
       "fundRatio": 0.0164,
       "zbc": 1,
       "industry": "工程机械",
-      "reason": "工程机械"
+      "reason": "盾构机+风电锻件+并购重组"
     },
     {
       "code": "603138",
@@ -229,7 +229,7 @@
       "fundRatio": 0.0198,
       "zbc": 0,
       "industry": "IT服务Ⅱ",
-      "reason": "IT服务Ⅱ"
+      "reason": "数据库+AI应用+定增注册"
     },
     {
       "code": "601999",
@@ -249,7 +249,7 @@
       "fundRatio": 0.0203,
       "zbc": 0,
       "industry": "出版",
-      "reason": "出版"
+      "reason": "出版发行+AI应用+数智基金"
     },
     {
       "code": "002181",
@@ -269,7 +269,7 @@
       "fundRatio": 0.015,
       "zbc": 0,
       "industry": "出版",
-      "reason": "出版"
+      "reason": "微短剧+妙创平台+参股投资收益"
     },
     {
       "code": "002565",
@@ -289,7 +289,7 @@
       "fundRatio": 0.0098,
       "zbc": 0,
       "industry": "包装印刷",
-      "reason": "包装印刷"
+      "reason": "太空算力+新型烟草+环保包装"
     },
     {
       "code": "002086",
@@ -309,7 +309,7 @@
       "fundRatio": 0.0077,
       "zbc": 3,
       "industry": "农产品加",
-      "reason": "农产品加"
+      "reason": "质谱诊断+体外诊断+海参养殖+“羊”字辈"
     },
     {
       "code": "301102",
@@ -329,7 +329,7 @@
       "fundRatio": 0.004,
       "zbc": 3,
       "industry": "广告营销",
-      "reason": "广告营销"
+      "reason": "裸眼3D+AI创意+高铁传媒"
     },
     {
       "code": "600715",
@@ -349,7 +349,7 @@
       "fundRatio": 0.0042,
       "zbc": 2,
       "industry": "游戏Ⅱ",
-      "reason": "游戏Ⅱ"
+      "reason": "AI漫剧+游戏+影院运营"
     },
     {
       "code": "600252",
@@ -369,7 +369,7 @@
       "fundRatio": 0.0031,
       "zbc": 2,
       "industry": "中药Ⅱ",
-      "reason": "中药Ⅱ"
+      "reason": "中药创新药+医药制造+回购注销"
     },
     {
       "code": "002591",
@@ -389,7 +389,7 @@
       "fundRatio": 0.0304,
       "zbc": 2,
       "industry": "化学制品",
-      "reason": "化学制品"
+      "reason": "AI算力服务器+钠电材料+硅碳负极"
     },
     {
       "code": "002929",
@@ -409,7 +409,7 @@
       "fundRatio": 0.012,
       "zbc": 1,
       "industry": "通信服务",
-      "reason": "通信服务"
+      "reason": "词元出海+网络安全大模型+算力网络"
     },
     {
       "code": "002696",
@@ -429,7 +429,7 @@
       "fundRatio": 0.0247,
       "zbc": 0,
       "industry": "饲料",
-      "reason": "饲料"
+      "reason": "水产饲料+鱼粉涨价+青岛国资+“羊”字辈"
     },
     {
       "code": "603330",
@@ -449,7 +449,7 @@
       "fundRatio": 0.0082,
       "zbc": 4,
       "industry": "塑料",
-      "reason": "塑料"
+      "reason": "电子胶+光模块胶+热熔胶+“羊”字辈"
     },
     {
       "code": "601566",
@@ -469,7 +469,7 @@
       "fundRatio": 0.0106,
       "zbc": 0,
       "industry": "服装家纺",
-      "reason": "服装家纺"
+      "reason": "羊毛羊绒+男裤+太空裤+海峡两岸"
     },
     {
       "code": "600802",
@@ -489,7 +489,7 @@
       "fundRatio": 0.0014,
       "zbc": 0,
       "industry": "水泥",
-      "reason": "水泥"
+      "reason": "水泥熟料+重点工程+福建国资"
     },
     {
       "code": "300006",
@@ -509,7 +509,7 @@
       "fundRatio": 0.0106,
       "zbc": 0,
       "industry": "化学制药",
-      "reason": "化学制药"
+      "reason": "抗癌药物+纳米炭铁+资产出售"
     },
     {
       "code": "600838",
@@ -529,7 +529,7 @@
       "fundRatio": 0.002,
       "zbc": 2,
       "industry": "一般零售",
-      "reason": "一般零售"
+      "reason": "商业地产+商贸零售+洗染服务"
     },
     {
       "code": "603236",
@@ -549,7 +549,7 @@
       "fundRatio": 0.0002,
       "zbc": 17,
       "industry": "通信设备",
-      "reason": "通信设备"
+      "reason": "端侧AI+机器人+通信模组+业绩增长"
     },
     {
       "code": "001201",
@@ -569,7 +569,7 @@
       "fundRatio": 0.0101,
       "zbc": 0,
       "industry": "养殖业",
-      "reason": "养殖业"
+      "reason": "生猪养殖+供港活猪+降本增效"
     },
     {
       "code": "002792",
@@ -589,7 +589,7 @@
       "fundRatio": 0.0056,
       "zbc": 8,
       "industry": "通信设备",
-      "reason": "通信设备"
+      "reason": "卫星通信+SpaceX+海外客户"
     },
     {
       "code": "001216",
@@ -609,7 +609,7 @@
       "fundRatio": 0.0104,
       "zbc": 0,
       "industry": "家居用品",
-      "reason": "家居用品"
+      "reason": "MLCC粉体+酒器+日用陶瓷"
     },
     {
       "code": "603629",
@@ -629,7 +629,7 @@
       "fundRatio": 0.0042,
       "zbc": 5,
       "industry": "消费电子",
-      "reason": "消费电子"
+      "reason": "算力租赁+Token业务+英伟达合作"
     },
     {
       "code": "603696",
@@ -649,7 +649,7 @@
       "fundRatio": 0.0136,
       "zbc": 1,
       "industry": "调味发酵",
-      "reason": "调味发酵"
+      "reason": "复合调味品+对台贸易+业绩增长"
     },
     {
       "code": "002639",
@@ -669,7 +669,7 @@
       "fundRatio": 0.0195,
       "zbc": 0,
       "industry": "通用设备",
-      "reason": "通用设备"
+      "reason": "数据中心冷却+压缩机+制冰系统"
     },
     {
       "code": "600202",
@@ -689,7 +689,7 @@
       "fundRatio": 0.0056,
       "zbc": 6,
       "industry": "通用设备",
-      "reason": "通用设备"
+      "reason": "空冷器+飞翼空冷器+股东增持"
     },
     {
       "code": "002811",
@@ -709,7 +709,7 @@
       "fundRatio": 0.0095,
       "zbc": 2,
       "industry": "装修装饰",
-      "reason": "装修装饰"
+      "reason": "半导体入股+AI设计+室内设计"
     },
     {
       "code": "605388",
@@ -729,7 +729,7 @@
       "fundRatio": 0.0109,
       "zbc": 2,
       "industry": "饮料乳品",
-      "reason": "饮料乳品"
+      "reason": "益生菌食品+益生菌出海+菌株研发"
     },
     {
       "code": "002238",
@@ -749,7 +749,7 @@
       "fundRatio": 0.0076,
       "zbc": 0,
       "industry": "电视广播",
-      "reason": "电视广播"
+      "reason": "广电网络+数据中心+网络安全"
     },
     {
       "code": "603636",
@@ -769,7 +769,7 @@
       "fundRatio": 0.0125,
       "zbc": 0,
       "industry": "IT服务Ⅱ",
-      "reason": "IT服务Ⅱ"
+      "reason": "AI短剧+数据要素+政务智能体+数字政府"
     },
     {
       "code": "000518",
@@ -789,7 +789,7 @@
       "fundRatio": 0.0006,
       "zbc": 2,
       "industry": "生物制品",
-      "reason": "生物制品"
+      "reason": "长源并表+生物医药+中润收购"
     },
     {
       "code": "600271",
@@ -809,7 +809,7 @@
       "fundRatio": 0.0047,
       "zbc": 0,
       "industry": "IT服务Ⅱ",
-      "reason": "IT服务Ⅱ"
+      "reason": "数字财税+AI财税+数据要素"
     },
     {
       "code": "002368",
@@ -829,7 +829,7 @@
       "fundRatio": 0.0053,
       "zbc": 0,
       "industry": "IT服务Ⅱ",
-      "reason": "IT服务Ⅱ"
+      "reason": "数据库+云数服务+央企"
     },
     {
       "code": "301159",
@@ -849,7 +849,7 @@
       "fundRatio": 0.0209,
       "zbc": 0,
       "industry": "软件开发",
-      "reason": "软件开发"
+      "reason": "数据要素+AI应用+具身机器人+检验检测"
     },
     {
       "code": "688500",
@@ -869,7 +869,7 @@
       "fundRatio": 0.0092,
       "zbc": 1,
       "industry": "IT服务Ⅱ",
-      "reason": "IT服务Ⅱ"
+      "reason": "数据要素+数据分析+具身智能+AI应用"
     },
     {
       "code": "300296",
@@ -889,7 +889,7 @@
       "fundRatio": 0.0137,
       "zbc": 1,
       "industry": "光学光电",
-      "reason": "光学光电"
+      "reason": "物理AI+数据+人形机器人+Micro LED"
     },
     {
       "code": "603999",
@@ -909,7 +909,7 @@
       "fundRatio": 0.0164,
       "zbc": 0,
       "industry": "出版",
-      "reason": "出版"
+      "reason": "出版发行+数字出版+人工智能"
     },
     {
       "code": "000788",
@@ -929,7 +929,7 @@
       "fundRatio": 0.0134,
       "zbc": 1,
       "industry": "化学制药",
-      "reason": "化学制药"
+      "reason": "化学制药+降脂复方药+原料制剂一体化"
     },
     {
       "code": "688286",
@@ -949,7 +949,7 @@
       "fundRatio": 0.0026,
       "zbc": 2,
       "industry": "半导体",
-      "reason": "半导体"
+      "reason": "机器人传感+MEMS传感+高可靠应用"
     },
     {
       "code": "002112",
@@ -969,7 +969,7 @@
       "fundRatio": 0.0162,
       "zbc": 0,
       "industry": "电网设备",
-      "reason": "电网设备"
+      "reason": "变压器+AI算力+国企改革"
     },
     {
       "code": "002242",
@@ -989,7 +989,7 @@
       "fundRatio": 0.0023,
       "zbc": 4,
       "industry": "小家电",
-      "reason": "小家电"
+      "reason": "机器人投资+厨房小家电+豆浆机+“羊”字辈"
     },
     {
       "code": "603721",
@@ -1009,7 +1009,7 @@
       "fundRatio": 0.0101,
       "zbc": 0,
       "industry": "影视院线",
-      "reason": "影视院线"
+      "reason": "AI语料+AI漫剧+传媒内容"
     }
   ]
 }

@@ -42,6 +42,16 @@ const EM_REF = 'https://quote.eastmoney.com/';
 
 const SINA_POOL = 'https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_BillBoard.GetListZTPool';
 
+// 同花顺涨停池：提供题材级「涨停原因」(reason_type)，如 “端侧AI+机器人+通信模组”。
+// 东财池只给行业板块(hybk)，不返回题材，因此涨停原因以东财为底、同花顺补齐。
+const THS_POOL = 'https://data.10jqka.com.cn/dataapi/limit_up/limit_up_pool';
+const THS_FIELDS = '199112,10,9001,330323,330324,330325,330329,9002,133971,133970,1968584,3475914,9004,9005,9003,9006';
+const THS_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1',
+  Referer: 'https://data.10jqka.com.cn/',
+  Accept: 'application/json, text/plain, */*',
+};
+
 const REQUEST_TIMEOUT = 15000;
 const MAX_RETRY = 3;
 
@@ -205,6 +215,31 @@ async function fetchSina(compactDate) {
 }
 
 // ---------------------------------------------------------------------------
+// 4.5 数据源：同花顺涨停池 → 涨停原因（题材级 reason_type）
+// ---------------------------------------------------------------------------
+/**
+ * 抓取同花顺涨停池，返回 code -> 涨停原因(reason_type) 映射。
+ * reason_type 形如「端侧AI+机器人+通信模组+业绩增长」，即用户要的“涨停原因”。
+ * 失败时抛错，由调用方回退为行业板块。
+ * @param {string} compactDate YYYYMMDD
+ * @returns {Promise<Map<string, string>>}
+ */
+async function fetchTHSReasons(compactDate) {
+  const url =
+    `${THS_POOL}?page=1&limit=200&field=${THS_FIELDS}` +
+    `&filter=HS,GEM2STAR&order_field=330324&order_type=0&date=${compactDate}`;
+  const j = await fetchJSON(url, THS_HEADERS);
+  const info = (j && j.data && j.data.info) || [];
+  const map = new Map();
+  for (const it of info) {
+    const code = it && (it.code || it.stock_code);
+    if (code) map.set(String(code).padStart(6, '0'), it.reason_type || it.reason || '');
+  }
+  if (!map.size) throw new Error('同花顺返回空列表');
+  return map;
+}
+
+// ---------------------------------------------------------------------------
 // 5. 交易日探测：从 target 往前找最近一个有数据的交易日（跳过周末，最多回溯 12 天）
 // ---------------------------------------------------------------------------
 /**
@@ -260,30 +295,12 @@ async function resolveTradeDay(explicitDate) {
 // 6. 字段归一化
 // ---------------------------------------------------------------------------
 /**
- * 涨停原因（题材）。
- *
- * 说明：东方财富涨停池接口（getTopicZTPool）只稳定返回行业板块字段（hybk），
- * 不返回“题材/概念级”的涨停原因；而题材级的免费接口（getTopicZTReason、
- * getTopicPool、同花顺 zhangting 等）在当前环境均不可用（返回空/404/跳转首页）。
- * 因此第一版以“行业板块”作为涨停原因展示（免费源唯一可靠的分类维度）。
- *
- * 接入真实题材：若后续拿到可用的题材数据源（如付费东财/同花顺题材接口），
- * 只需在此函数内把返回值改为真实题材即可，前端与数据文件无需改动。
- *
- * @param {Object} it 原始记录
- * @returns {string}
- */
-function reasonOf(it) {
-  // TODO(题材源): 替换为真实题材接口返回值，例如 it.theme || fetchReason(code)
-  return it.hybk || '';
-}
-
-/**
  * 把单条原始记录归一化为看板标准结构。
- * @param {Object} it
+ * @param {Object} it 原始记录
+ * @param {Map<string,string>} [reasonMap] 同花顺 code -> 涨停原因(reason_type)
  * @returns {Object}
  */
-function normalize(it) {
+function normalize(it, reasonMap) {
   const code = String(it.c || '');
   const price = round(num(it.p) / 1000, 3); // 毫 -> 元
   const ltsz = num(it.ltsz); // 流通市值（元）
@@ -310,7 +327,8 @@ function normalize(it) {
     fundRatio, // 封单比 = 封单额 / 流通市值
     zbc: num(it.zbc), // 炸板数（0 表示未炸板）
     industry: it.hybk || '', // 行业板块
-    reason: reasonOf(it), // 涨停原因（第一版=行业板块，详见 reasonOf 注释）
+    // 涨停原因：优先同花顺题材级 reason_type；拿不到则回退行业板块。
+    reason: (reasonMap && reasonMap.get(code)) || it.hybk || '',
   };
 }
 
@@ -323,8 +341,8 @@ function normalize(it) {
  * @param {Object} raw
  * @returns {Object} 当日完整对象
  */
-function buildDayFile(dash, source, raw) {
-  const list = (raw.pool || []).map(normalize);
+function buildDayFile(dash, source, raw, reasonMap) {
+  const list = (raw.pool || []).map((it) => normalize(it, reasonMap));
   // 摘要（前端也会从 list 重算，这里冗余存储便于只读场景）
   const maxBoards = list.reduce((m, x) => Math.max(m, x.boards), 0);
   const amountYi = round(list.reduce((s, x) => s + x.amountYi, 0), 4);
@@ -416,7 +434,16 @@ async function main() {
 
   if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true });
 
-  const dayObj = buildDayFile(day.dash, day.source, day.raw);
+  // 涨停原因：从同花顺涨停池补齐题材级 reason_type（东财池不提供题材）。
+  let reasonMap = new Map();
+  try {
+    reasonMap = await fetchTHSReasons(day.compact);
+    console.log(`[ok] 同花顺涨停原因(reason_type): ${reasonMap.size} 条`);
+  } catch (e) {
+    console.warn(`[warn] 同花顺涨停原因抓取失败，回退为行业板块: ${e.message}`);
+  }
+
+  const dayObj = buildDayFile(day.dash, day.source, day.raw, reasonMap);
   const dayPath = join(DATA_DIR, `${day.dash}.json`);
   writeFileSync(dayPath, JSON.stringify(dayObj, null, 2), 'utf8');
   console.log(`[ok] 已写入当日快照: ${dayPath} (涨停 ${dayObj.total} 只)`);
