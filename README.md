@@ -14,7 +14,10 @@
 
 ## 🚀 本地预览
 
-任意静态服务器即可（注意：直接 `file://` 打开会因浏览器同源策略无法 `fetch` 本地 JSON，请用本地服务器）：
+**方式一（最简单）：直接双击 `index.html`**
+任意浏览器都能打开。站点已内置 `data/bundle.js` 通道（把数据以 `<script>` 注入 `window.LIMITUP_DATA`），用来绕过 `file://` 协议下 `fetch` 本地 JSON 被拦截的问题。
+
+**方式二：起一个静态服务器**（与 GitHub Pages 行为一致）
 
 ```bash
 # 任选其一，在项目根目录执行：
@@ -24,6 +27,8 @@ npx serve .
 ```
 
 然后访问 `http://localhost:8080/`。
+
+> 原理：`file://` 下浏览器把页面视为“不透明来源”，`fetch('data/*.json')` 会报 `Failed to fetch`；`<script>` 不受 CORS 限制，所以用 bundle 兜底。HTTP 环境下仍优先走 JSON 文件。
 
 ## 📥 抓取数据
 
@@ -37,6 +42,7 @@ node fetch/limitup.mjs 2026-10-21 # 抓取指定日期
 1. 清除代理环境变量后直连东方财富 `push2ex` 涨停池（参数 `date=YYYYMMDD` + `dpt=wz.ztzt`）；东财不可用时自动切换新浪涨停池兜底。
 2. 归一化字段并写出 `data/<YYYY-MM-DD>.json`（当日完整快照）。
 3. 扫描 `data/` 下所有日期文件，**升序**重建 `data/index.json`（供时间序列与时间轴使用）。
+4. 同步生成 `data/bundle.js`（`window.LIMITUP_DATA`），保证双击 `index.html` 也能读数据，无需起服务器。
 
 ### 输出字段说明（`data/<日期>.json` 中每条 `zt`）
 
@@ -68,14 +74,23 @@ limitup-dashboard/
 │   └── limitup.mjs     # 零依赖 Node 抓取脚本
 ├── data/               # 数据快照（脚本生成，建议提交到仓库）
 │   ├── index.json      # 升序聚合索引
+│   ├── bundle.js       # file:// 双击打开的兜底数据（自动生成）
 │   └── YYYY-MM-DD.json # 每日完整快照
-├── .github/workflows/daily.yml  # 每日北京 16:00 自动抓取并提交
 └── README.md
 ```
 
-## 🤖 自动更新（GitHub Actions）
+## 🔄 每日更新
 
-`.github/workflows/daily.yml` 在每个交易日**北京 16:00** 运行抓取脚本，并将新的 `data/` 文件提交回仓库（best-effort，网络/接口异常时跳过）。这样 GitHub Pages 站点每天自动更新。也可手动触发 `workflow_dispatch`。
+每个交易日收盘后，在项目根目录执行：
+
+```bash
+node fetch/limitup.mjs
+git add data && git commit -m "data: $(date +%F)" && git push
+```
+
+`fetch/limitup.mjs` 会同时刷新 `data/<日期>.json`、`data/index.json`、`data/bundle.js`，提交后 GitHub Pages 自动更新。
+
+> 自动化的 GitHub Actions 工作流未纳入仓库：当前 PAT 只有 `repo` 权限、没有 `workflow` scope，GitHub 会拒绝推送 workflow 文件。若想全自动，请到 GitHub → Settings → Developer settings 重新生成带 `workflow` scope 的 token，再补 `.github/workflows/daily.yml`。海外 runner 访问东财也可能超时，手动执行最稳。
 
 ## ⚠️ 免责声明
 

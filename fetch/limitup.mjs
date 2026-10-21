@@ -353,6 +353,38 @@ function rebuildIndex() {
   return { dates: series.map((x) => x.date), series };
 }
 
+/**
+ * 生成 data/bundle.js：把 index + 所有交易日打包成 window.LIMITUP_DATA。
+ * 目的：用户直接双击 index.html（file:// 协议）时，浏览器会以“不透明来源”
+ * 拦截 fetch('data/*.json')，导致 Failed to fetch；而 <script> 标签不受此限制。
+ * 因此额外产出本文件，让本地双击与 GitHub Pages 两种打开方式都能用。
+ * @param {Object} indexObj
+ * @returns {string} bundle.js 的绝对路径
+ */
+function rebuildBundle(indexObj) {
+  const days = {};
+  if (existsSync(DATA_DIR)) {
+    const files = readdirSync(DATA_DIR).filter((f) => /^\d{4}-\d{2}-\d{2}\.json$/.test(f));
+    for (const f of files) {
+      try {
+        const obj = JSON.parse(readFileSync(join(DATA_DIR, f), 'utf8'));
+        days[obj.date || f.replace(/\.json$/, '')] = obj;
+      } catch (e) {
+        console.warn(`[warn] bundle 跳过无法解析的文件: ${f}`);
+      }
+    }
+  }
+  const payload = { index: indexObj, days: days };
+  const js =
+    '/* 自动生成，请勿手改。作用：file:// 直接双击打开时绕过 fetch 的 CORS 限制。 */\n' +
+    'window.LIMITUP_DATA = ' +
+    JSON.stringify(payload) +
+    ';\n';
+  const p = join(DATA_DIR, 'bundle.js');
+  writeFileSync(p, js, 'utf8');
+  return p;
+}
+
 // ---------------------------------------------------------------------------
 // 8. 主流程
 // ---------------------------------------------------------------------------
@@ -373,6 +405,9 @@ async function main() {
   const indexPath = join(DATA_DIR, 'index.json');
   writeFileSync(indexPath, JSON.stringify(indexObj, null, 2), 'utf8');
   console.log(`[ok] 已重建索引: ${indexPath} (共 ${indexObj.series.length} 个交易日)`);
+
+  const bundlePath = rebuildBundle(indexObj);
+  console.log(`[ok] 已生成 file:// 通道: ${bundlePath}`);
 
   // 打印一个样本，便于自检
   if (dayObj.zt.length) {

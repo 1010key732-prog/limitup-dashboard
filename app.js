@@ -34,6 +34,18 @@
 
   /** 拉取 JSON，失败抛错（由调用方决定如何提示）。 */
   async function fetchJSON(path) {
+    // file:// 直接双击 index.html 时，浏览器会拦截 fetch 本地 JSON（Failed to fetch）。
+    // 若页面已通过 <script src="data/bundle.js"> 注入 window.LIMITUP_DATA，则优先用它，
+    // 这样本地双击、任意浏览器都能看；GitHub Pages（http 同源）则继续走 fetch。
+    const bundle = typeof window !== 'undefined' ? window.LIMITUP_DATA : null;
+    if (bundle) {
+      if (path === 'data/index.json') return bundle.index;
+      const m = /^data\/(\d{4}-\d{2}-\d{2})\.json$/.exec(path);
+      if (m) {
+        if (bundle.days && bundle.days[m[1]]) return bundle.days[m[1]];
+        throw new Error('bundle 中无该交易日数据');
+      }
+    }
     const res = await fetch(path, { cache: 'no-store' });
     if (!res.ok) throw new Error('HTTP ' + res.status);
     return await res.json();

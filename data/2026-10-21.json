@@ -1,13 +1,13 @@
 {
   "date": "2026-10-21",
   "source": "eastmoney",
-  "fetchTime": "2026-10-21T07:03:07.737Z",
+  "fetchTime": "2026-10-21T07:31:50.322Z",
   "total": 50,
   "summary": {
     "total": 50,
     "maxBoards": 4,
     "amountYi": 334.7195,
-    "zbcSum": 73,
+    "zbcSum": 74,
     "maxFundRatio": 0.0905
   },
   "zt": [
@@ -821,11 +821,11 @@
       "boards": 1,
       "days": 1,
       "firstTime": "11:27:43",
-      "lastTime": "11:27:43",
+      "lastTime": "15:00:00",
       "fund": 26039521,
       "fundWan": 2603.95,
       "fundRatio": 0.0092,
-      "zbc": 0,
+      "zbc": 1,
       "industry": "IT服务Ⅱ"
     },
     {
