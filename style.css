@@ -222,6 +222,13 @@ html, body {
   color: var(--text-sub);
 }
 
+/* 涨停原因列 */
+.reason-cell { color: var(--text); max-width: 160px; white-space: normal; }
+
+/* 按行业/涨停原因排序时，相同行业成块：每个新分组首行加高亮分隔线 */
+.data-table tbody tr.group-start td { border-top: 2px solid var(--accent); }
+.data-table tbody tr.group-start td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+
 /* 空状态 */
 .empty-row td { text-align: center; color: var(--text-sub); padding: 30px; }
 

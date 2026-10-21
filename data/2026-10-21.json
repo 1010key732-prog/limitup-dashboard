@@ -1,7 +1,7 @@
 {
   "date": "2026-10-21",
   "source": "eastmoney",
-  "fetchTime": "2026-10-21T07:31:50.322Z",
+  "fetchTime": "2026-10-21T08:04:14.154Z",
   "total": 50,
   "summary": {
     "total": 50,
@@ -28,7 +28,8 @@
       "fundWan": 9535.96,
       "fundRatio": 0.0263,
       "zbc": 0,
-      "industry": "通信设备"
+      "industry": "通信设备",
+      "reason": "通信设备"
     },
     {
       "code": "002347",
@@ -47,7 +48,8 @@
       "fundWan": 11885.87,
       "fundRatio": 0.0331,
       "zbc": 0,
-      "industry": "通用设备"
+      "industry": "通用设备",
+      "reason": "通用设备"
     },
     {
       "code": "002724",
@@ -66,7 +68,8 @@
       "fundWan": 20008.56,
       "fundRatio": 0.0347,
       "zbc": 0,
-      "industry": "照明设备"
+      "industry": "照明设备",
+      "reason": "照明设备"
     },
     {
       "code": "002835",
@@ -85,7 +88,8 @@
       "fundWan": 8062.34,
       "fundRatio": 0.0406,
       "zbc": 1,
-      "industry": "计算机设"
+      "industry": "计算机设",
+      "reason": "计算机设"
     },
     {
       "code": "600178",
@@ -104,7 +108,8 @@
       "fundWan": 15971.32,
       "fundRatio": 0.0251,
       "zbc": 1,
-      "industry": "汽车零部"
+      "industry": "汽车零部",
+      "reason": "汽车零部"
     },
     {
       "code": "603278",
@@ -123,7 +128,8 @@
       "fundWan": 40053.94,
       "fundRatio": 0.0889,
       "zbc": 0,
-      "industry": "通用设备"
+      "industry": "通用设备",
+      "reason": "通用设备"
     },
     {
       "code": "600293",
@@ -142,7 +148,8 @@
       "fundWan": 49889.21,
       "fundRatio": 0.0905,
       "zbc": 0,
-      "industry": "玻璃玻纤"
+      "industry": "玻璃玻纤",
+      "reason": "玻璃玻纤"
     },
     {
       "code": "002076",
@@ -161,7 +168,8 @@
       "fundWan": 13844.48,
       "fundRatio": 0.0542,
       "zbc": 0,
-      "industry": "照明设备"
+      "industry": "照明设备",
+      "reason": "照明设备"
     },
     {
       "code": "603332",
@@ -180,7 +188,8 @@
       "fundWan": 5798.14,
       "fundRatio": 0.0211,
       "zbc": 0,
-      "industry": "化学纤维"
+      "industry": "化学纤维",
+      "reason": "化学纤维"
     },
     {
       "code": "001239",
@@ -199,7 +208,8 @@
       "fundWan": 2753.87,
       "fundRatio": 0.0164,
       "zbc": 1,
-      "industry": "工程机械"
+      "industry": "工程机械",
+      "reason": "工程机械"
     },
     {
       "code": "603138",
@@ -218,7 +228,8 @@
       "fundWan": 8769.52,
       "fundRatio": 0.0198,
       "zbc": 0,
-      "industry": "IT服务Ⅱ"
+      "industry": "IT服务Ⅱ",
+      "reason": "IT服务Ⅱ"
     },
     {
       "code": "601999",
@@ -237,7 +248,8 @@
       "fundWan": 8716.61,
       "fundRatio": 0.0203,
       "zbc": 0,
-      "industry": "出版"
+      "industry": "出版",
+      "reason": "出版"
     },
     {
       "code": "002181",
@@ -256,7 +268,8 @@
       "fundWan": 18935.56,
       "fundRatio": 0.015,
       "zbc": 0,
-      "industry": "出版"
+      "industry": "出版",
+      "reason": "出版"
     },
     {
       "code": "002565",
@@ -275,7 +288,8 @@
       "fundWan": 8769.77,
       "fundRatio": 0.0098,
       "zbc": 0,
-      "industry": "包装印刷"
+      "industry": "包装印刷",
+      "reason": "包装印刷"
     },
     {
       "code": "002086",
@@ -294,7 +308,8 @@
       "fundWan": 2895.02,
       "fundRatio": 0.0077,
       "zbc": 3,
-      "industry": "农产品加"
+      "industry": "农产品加",
+      "reason": "农产品加"
     },
     {
       "code": "301102",
@@ -313,7 +328,8 @@
       "fundWan": 1851.75,
       "fundRatio": 0.004,
       "zbc": 3,
-      "industry": "广告营销"
+      "industry": "广告营销",
+      "reason": "广告营销"
     },
     {
       "code": "600715",
@@ -332,7 +348,8 @@
       "fundWan": 2240.07,
       "fundRatio": 0.0042,
       "zbc": 2,
-      "industry": "游戏Ⅱ"
+      "industry": "游戏Ⅱ",
+      "reason": "游戏Ⅱ"
     },
     {
       "code": "600252",
@@ -351,7 +368,8 @@
       "fundWan": 2380.15,
       "fundRatio": 0.0031,
       "zbc": 2,
-      "industry": "中药Ⅱ"
+      "industry": "中药Ⅱ",
+      "reason": "中药Ⅱ"
     },
     {
       "code": "002591",
@@ -370,7 +388,8 @@
       "fundWan": 4675.3,
       "fundRatio": 0.0304,
       "zbc": 2,
-      "industry": "化学制品"
+      "industry": "化学制品",
+      "reason": "化学制品"
     },
     {
       "code": "002929",
@@ -389,7 +408,8 @@
       "fundWan": 14591.48,
       "fundRatio": 0.012,
       "zbc": 1,
-      "industry": "通信服务"
+      "industry": "通信服务",
+      "reason": "通信服务"
     },
     {
       "code": "002696",
@@ -408,7 +428,8 @@
       "fundWan": 8697.52,
       "fundRatio": 0.0247,
       "zbc": 0,
-      "industry": "饲料"
+      "industry": "饲料",
+      "reason": "饲料"
     },
     {
       "code": "603330",
@@ -427,7 +448,8 @@
       "fundWan": 3370.06,
       "fundRatio": 0.0082,
       "zbc": 4,
-      "industry": "塑料"
+      "industry": "塑料",
+      "reason": "塑料"
     },
     {
       "code": "601566",
@@ -446,7 +468,8 @@
       "fundWan": 6256.86,
       "fundRatio": 0.0106,
       "zbc": 0,
-      "industry": "服装家纺"
+      "industry": "服装家纺",
+      "reason": "服装家纺"
     },
     {
       "code": "600802",
@@ -465,7 +488,8 @@
       "fundWan": 439.01,
       "fundRatio": 0.0014,
       "zbc": 0,
-      "industry": "水泥"
+      "industry": "水泥",
+      "reason": "水泥"
     },
     {
       "code": "300006",
@@ -484,7 +508,8 @@
       "fundWan": 10427.06,
       "fundRatio": 0.0106,
       "zbc": 0,
-      "industry": "化学制药"
+      "industry": "化学制药",
+      "reason": "化学制药"
     },
     {
       "code": "600838",
@@ -503,7 +528,8 @@
       "fundWan": 716.02,
       "fundRatio": 0.002,
       "zbc": 2,
-      "industry": "一般零售"
+      "industry": "一般零售",
+      "reason": "一般零售"
     },
     {
       "code": "603236",
@@ -522,7 +548,8 @@
       "fundWan": 770.15,
       "fundRatio": 0.0002,
       "zbc": 17,
-      "industry": "通信设备"
+      "industry": "通信设备",
+      "reason": "通信设备"
     },
     {
       "code": "001201",
@@ -541,7 +568,8 @@
       "fundWan": 3412.74,
       "fundRatio": 0.0101,
       "zbc": 0,
-      "industry": "养殖业"
+      "industry": "养殖业",
+      "reason": "养殖业"
     },
     {
       "code": "002792",
@@ -560,7 +588,8 @@
       "fundWan": 6110.9,
       "fundRatio": 0.0056,
       "zbc": 8,
-      "industry": "通信设备"
+      "industry": "通信设备",
+      "reason": "通信设备"
     },
     {
       "code": "001216",
@@ -579,7 +608,8 @@
       "fundWan": 6471.36,
       "fundRatio": 0.0104,
       "zbc": 0,
-      "industry": "家居用品"
+      "industry": "家居用品",
+      "reason": "家居用品"
     },
     {
       "code": "603629",
@@ -598,7 +628,8 @@
       "fundWan": 13954.32,
       "fundRatio": 0.0042,
       "zbc": 5,
-      "industry": "消费电子"
+      "industry": "消费电子",
+      "reason": "消费电子"
     },
     {
       "code": "603696",
@@ -617,7 +648,8 @@
       "fundWan": 4795.19,
       "fundRatio": 0.0136,
       "zbc": 1,
-      "industry": "调味发酵"
+      "industry": "调味发酵",
+      "reason": "调味发酵"
     },
     {
       "code": "002639",
@@ -636,7 +668,8 @@
       "fundWan": 19545.31,
       "fundRatio": 0.0195,
       "zbc": 0,
-      "industry": "通用设备"
+      "industry": "通用设备",
+      "reason": "通用设备"
     },
     {
       "code": "600202",
@@ -655,7 +688,8 @@
       "fundWan": 1202.45,
       "fundRatio": 0.0056,
       "zbc": 6,
-      "industry": "通用设备"
+      "industry": "通用设备",
+      "reason": "通用设备"
     },
     {
       "code": "002811",
@@ -674,7 +708,8 @@
       "fundWan": 6519.54,
       "fundRatio": 0.0095,
       "zbc": 2,
-      "industry": "装修装饰"
+      "industry": "装修装饰",
+      "reason": "装修装饰"
     },
     {
       "code": "605388",
@@ -693,7 +728,8 @@
       "fundWan": 4795.33,
       "fundRatio": 0.0109,
       "zbc": 2,
-      "industry": "饮料乳品"
+      "industry": "饮料乳品",
+      "reason": "饮料乳品"
     },
     {
       "code": "002238",
@@ -712,7 +748,8 @@
       "fundWan": 4633.12,
       "fundRatio": 0.0076,
       "zbc": 0,
-      "industry": "电视广播"
+      "industry": "电视广播",
+      "reason": "电视广播"
     },
     {
       "code": "603636",
@@ -731,7 +768,8 @@
       "fundWan": 7106.83,
       "fundRatio": 0.0125,
       "zbc": 0,
-      "industry": "IT服务Ⅱ"
+      "industry": "IT服务Ⅱ",
+      "reason": "IT服务Ⅱ"
     },
     {
       "code": "000518",
@@ -750,7 +788,8 @@
       "fundWan": 240.2,
       "fundRatio": 0.0006,
       "zbc": 2,
-      "industry": "生物制品"
+      "industry": "生物制品",
+      "reason": "生物制品"
     },
     {
       "code": "600271",
@@ -769,7 +808,8 @@
       "fundWan": 6430.58,
       "fundRatio": 0.0047,
       "zbc": 0,
-      "industry": "IT服务Ⅱ"
+      "industry": "IT服务Ⅱ",
+      "reason": "IT服务Ⅱ"
     },
     {
       "code": "002368",
@@ -788,7 +828,8 @@
       "fundWan": 4855.07,
       "fundRatio": 0.0053,
       "zbc": 0,
-      "industry": "IT服务Ⅱ"
+      "industry": "IT服务Ⅱ",
+      "reason": "IT服务Ⅱ"
     },
     {
       "code": "301159",
@@ -807,7 +848,8 @@
       "fundWan": 4298.01,
       "fundRatio": 0.0209,
       "zbc": 0,
-      "industry": "软件开发"
+      "industry": "软件开发",
+      "reason": "软件开发"
     },
     {
       "code": "688500",
@@ -826,7 +868,8 @@
       "fundWan": 2603.95,
       "fundRatio": 0.0092,
       "zbc": 1,
-      "industry": "IT服务Ⅱ"
+      "industry": "IT服务Ⅱ",
+      "reason": "IT服务Ⅱ"
     },
     {
       "code": "300296",
@@ -845,7 +888,8 @@
       "fundWan": 17883.57,
       "fundRatio": 0.0137,
       "zbc": 1,
-      "industry": "光学光电"
+      "industry": "光学光电",
+      "reason": "光学光电"
     },
     {
       "code": "603999",
@@ -864,7 +908,8 @@
       "fundWan": 7047.08,
       "fundRatio": 0.0164,
       "zbc": 0,
-      "industry": "出版"
+      "industry": "出版",
+      "reason": "出版"
     },
     {
       "code": "000788",
@@ -883,7 +928,8 @@
       "fundWan": 4664.68,
       "fundRatio": 0.0134,
       "zbc": 1,
-      "industry": "化学制药"
+      "industry": "化学制药",
+      "reason": "化学制药"
     },
     {
       "code": "688286",
@@ -902,7 +948,8 @@
       "fundWan": 1089.35,
       "fundRatio": 0.0026,
       "zbc": 2,
-      "industry": "半导体"
+      "industry": "半导体",
+      "reason": "半导体"
     },
     {
       "code": "002112",
@@ -921,7 +968,8 @@
       "fundWan": 6145.34,
       "fundRatio": 0.0162,
       "zbc": 0,
-      "industry": "电网设备"
+      "industry": "电网设备",
+      "reason": "电网设备"
     },
     {
       "code": "002242",
@@ -940,7 +988,8 @@
       "fundWan": 3952.82,
       "fundRatio": 0.0023,
       "zbc": 4,
-      "industry": "小家电"
+      "industry": "小家电",
+      "reason": "小家电"
     },
     {
       "code": "603721",
@@ -959,7 +1008,8 @@
       "fundWan": 2739.5,
       "fundRatio": 0.0101,
       "zbc": 0,
-      "industry": "影视院线"
+      "industry": "影视院线",
+      "reason": "影视院线"
     }
   ]
 }

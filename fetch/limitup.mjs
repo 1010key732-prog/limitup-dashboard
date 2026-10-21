@@ -260,6 +260,25 @@ async function resolveTradeDay(explicitDate) {
 // 6. 字段归一化
 // ---------------------------------------------------------------------------
 /**
+ * 涨停原因（题材）。
+ *
+ * 说明：东方财富涨停池接口（getTopicZTPool）只稳定返回行业板块字段（hybk），
+ * 不返回“题材/概念级”的涨停原因；而题材级的免费接口（getTopicZTReason、
+ * getTopicPool、同花顺 zhangting 等）在当前环境均不可用（返回空/404/跳转首页）。
+ * 因此第一版以“行业板块”作为涨停原因展示（免费源唯一可靠的分类维度）。
+ *
+ * 接入真实题材：若后续拿到可用的题材数据源（如付费东财/同花顺题材接口），
+ * 只需在此函数内把返回值改为真实题材即可，前端与数据文件无需改动。
+ *
+ * @param {Object} it 原始记录
+ * @returns {string}
+ */
+function reasonOf(it) {
+  // TODO(题材源): 替换为真实题材接口返回值，例如 it.theme || fetchReason(code)
+  return it.hybk || '';
+}
+
+/**
  * 把单条原始记录归一化为看板标准结构。
  * @param {Object} it
  * @returns {Object}
@@ -291,6 +310,7 @@ function normalize(it) {
     fundRatio, // 封单比 = 封单额 / 流通市值
     zbc: num(it.zbc), // 炸板数（0 表示未炸板）
     industry: it.hybk || '', // 行业板块
+    reason: reasonOf(it), // 涨停原因（第一版=行业板块，详见 reasonOf 注释）
   };
 }
 

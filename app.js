@@ -290,13 +290,13 @@
   function renderTable(day) {
     const tbody = document.getElementById('tableBody');
     if (!day || !day.zt || !day.zt.length) {
-      tbody.innerHTML = '<tr class="empty-row"><td colspan="9">暂无数据</td></tr>';
+      tbody.innerHTML = '<tr class="empty-row"><td colspan="10">暂无数据</td></tr>';
       return;
     }
     const rows = getRows().slice();
     const k = state.sortKey;
     const dir = state.sortDir === 'asc' ? 1 : -1;
-    const isText = ['code', 'name', 'industry', 'firstTime'].includes(k);
+    const isText = ['code', 'name', 'industry', 'reason', 'firstTime'].includes(k);
     rows.sort((a, b) => {
       if (isText) {
         return String(a[k] || '').localeCompare(String(b[k] || ''), 'zh') * dir;
@@ -304,14 +304,22 @@
       return ((Number(a[k]) || 0) - (Number(b[k]) || 0)) * dir;
     });
 
+    // 行业/涨停原因 排序时，给每个“新分组”的首行加分隔线，让相同行业上下成块。
+    const groupByIndustry = k === 'industry' || k === 'reason';
+    let prevGroup = null;
+
     tbody.innerHTML = rows
       .map((x) => {
         const frPct = Number.isFinite(x.fundRatio) ? (x.fundRatio * 100).toFixed(2) : '--';
+        const g = groupByIndustry ? (x.industry || '') : null;
+        const sep = groupByIndustry && g !== prevGroup ? ' group-start' : '';
+        prevGroup = g;
         return (
-          '<tr class="row-up">' +
+          '<tr class="row-up' + sep + '">' +
           '<td>' + (x.code || '--') + '</td>' +
           '<td class="name-cell">' + (x.name || '--') + '</td>' +
           '<td><span class="tag-industry">' + (x.industry || '--') + '</span></td>' +
+          '<td class="reason-cell">' + (x.reason || '--') + '</td>' +
           '<td class="num">' + (Number.isFinite(x.boards) ? x.boards : '--') + '</td>' +
           '<td class="num">' + frPct + '</td>' +
           '<td class="num">' + fmt(x.fundWan, 2) + '</td>' +
@@ -348,7 +356,7 @@
     document.getElementById('ladder').innerHTML =
       '<div class="empty-row" style="grid-column:1/-1">— 暂无数据 —</div>';
     document.getElementById('tableBody').innerHTML =
-      '<tr class="empty-row"><td colspan="9">暂无数据</td></tr>';
+      '<tr class="empty-row"><td colspan="10">暂无数据</td></tr>';
     LimitUpChart.vertical(document.getElementById('chartA'), [], {});
     LimitUpChart.horizontal(document.getElementById('chartB'), [], { onClick: onIndustryClick });
     LimitUpChart.vertical(document.getElementById('chartC'), [], {});
