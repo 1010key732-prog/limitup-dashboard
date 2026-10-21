@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>涨停数据看板 · A股</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 顶栏 -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="logo-dot"></span>
+      <h1 class="title">涨停数据看板</h1>
+      <span class="subtitle">A股 · 零依赖静态版</span>
+    </div>
+    <div class="topbar-right">
+      <label class="ctrl">
+        <span class="ctrl-label">交易日</span>
+        <select id="dateSelect" class="select"></select>
+      </label>
+      <span id="metaInfo" class="meta">—</span>
+    </div>
+  </header>
+
+  <!-- 加载/错误细条（不弹窗） -->
+  <div id="statusBar" class="statusbar" hidden></div>
+
+  <main class="container">
+    <!-- KPI -->
+    <section class="kpis" id="kpis">
+      <div class="kpi-card">
+        <div class="kpi-label">涨停数</div>
+        <div class="kpi-value up" id="kpiTotal">--</div>
+        <div class="kpi-sub" id="kpiTotalSub">只</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">连板最高</div>
+        <div class="kpi-value" id="kpiMaxBoards">--</div>
+        <div class="kpi-sub" id="kpiMaxBoardsSub">板</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">总成交额</div>
+        <div class="kpi-value" id="kpiAmount">--</div>
+        <div class="kpi-sub">亿元</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">炸板数</div>
+        <div class="kpi-value warn" id="kpiZbc">--</div>
+        <div class="kpi-sub">只（回落开板）</div>
+      </div>
+    </section>
+
+    <!-- 图 A：历日涨停数时间序列 -->
+    <section class="card chart-card chart-wide">
+      <div class="card-head">
+        <h2 class="card-title">历日涨停数走势</h2>
+        <span class="card-hint">数据来源：data/index.json（已归档交易日）</span>
+      </div>
+      <canvas id="chartA" class="chart-canvas"></canvas>
+    </section>
+
+    <!-- 图 B / 图 C -->
+    <div class="chart-row">
+      <section class="card chart-card">
+        <div class="card-head">
+          <h2 class="card-title">行业分布 Top 10</h2>
+          <div class="toggle" id="bToggle">
+            <button class="toggle-btn active" data-mode="count">按涨停数</button>
+            <button class="toggle-btn" data-mode="amount">按成交额亿</button>
+          </div>
+        </div>
+        <canvas id="chartB" class="chart-canvas"></canvas>
+        <div class="card-foot">点击横条可筛选下方表格</div>
+      </section>
+
+      <section class="card chart-card">
+        <div class="card-head">
+          <h2 class="card-title">个股成交额 Top 15</h2>
+          <span class="card-hint">单位：亿元</span>
+        </div>
+        <canvas id="chartC" class="chart-canvas"></canvas>
+      </section>
+    </div>
+
+    <!-- 连板梯队 -->
+    <section class="card">
+      <div class="card-head">
+        <h2 class="card-title">连板梯队</h2>
+        <span class="card-hint">首板（连板≤1） / 2板 / 3板 / 4板及以上</span>
+      </div>
+      <div class="ladder" id="ladder"></div>
+    </section>
+
+    <!-- 表格 -->
+    <section class="card">
+      <div class="card-head table-head">
+        <h2 class="card-title">涨停个股明细</h2>
+        <div class="filter-chip" id="filterChip" hidden>
+          <span id="filterChipText"></span>
+          <button class="chip-close" id="filterChipClose" title="清除筛选">✕</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="data-table" id="dataTable">
+          <thead>
+            <tr>
+              <th data-key="code" class="sortable">代码</th>
+              <th data-key="name" class="sortable">名称</th>
+              <th data-key="industry" class="sortable">行业</th>
+              <th data-key="boards" class="sortable num">连板</th>
+              <th data-key="fundRatio" class="sortable num">封单比%</th>
+              <th data-key="fundWan" class="sortable num">封单额万</th>
+              <th data-key="amountYi" class="sortable num">成交额亿</th>
+              <th data-key="turn" class="sortable num">换手%</th>
+              <th data-key="firstTime" class="sortable">首次封板</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>数据来源：东方财富 push2ex 涨停池（自动抓取，详见 fetch/limitup.mjs）。本看板仅供研究，不构成投资建议。</span>
+    </footer>
+  </main>
+
+  <script src="chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "dates": [
+    "2026-10-21"
+  ],
+  "series": [
+    {
+      "date": "2026-10-21",
+      "total": 50,
+      "maxBoards": 4,
+      "amountYi": 334.7195,
+      "zbcSum": 73
+    }
+  ]
+}

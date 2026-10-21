@@ -1,0 +1,18 @@
+# 依赖（本项目零依赖，仅为保险）
+node_modules/
+package-lock.json
+
+# 临时 / 日志
+*.log
+.DS_Store
+Thumbs.db
+_*.mjs
+_*.js
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# Actions 工作流需 PAT 的 workflow scope，v1 暂不纳入仓库（本地跑 fetch/limitup.mjs 即可）
+.github/
