@@ -445,8 +445,29 @@ async function main() {
 
   const dayObj = buildDayFile(day.dash, day.source, day.raw, reasonMap);
   const dayPath = join(DATA_DIR, `${day.dash}.json`);
-  writeFileSync(dayPath, JSON.stringify(dayObj, null, 2), 'utf8');
-  console.log(`[ok] 已写入当日快照: ${dayPath} (涨停 ${dayObj.total} 只)`);
+
+  // 若当日数据与已归档内容一致（忽略抓取时间 fetchTime），则不重写，
+  // 避免“每日自动更新”时仅因时间戳变化而产生无意义提交。
+  let needWrite = true;
+  if (existsSync(dayPath)) {
+    try {
+      const prev = JSON.parse(readFileSync(dayPath, 'utf8'));
+      const strip = (o) => {
+        const c = JSON.parse(JSON.stringify(o));
+        delete c.fetchTime;
+        return JSON.stringify(c);
+      };
+      if (strip(prev) === strip(dayObj)) needWrite = false;
+    } catch (_) {
+      /* 解析失败则照常重写 */
+    }
+  }
+  if (needWrite) {
+    writeFileSync(dayPath, JSON.stringify(dayObj, null, 2), 'utf8');
+    console.log(`[ok] 已写入当日快照: ${dayPath} (涨停 ${dayObj.total} 只)`);
+  } else {
+    console.log(`[skip] 当日数据无变化，跳过写入: ${dayPath} (涨停 ${dayObj.total} 只)`);
+  }
 
   const indexObj = rebuildIndex();
   const indexPath = join(DATA_DIR, 'index.json');

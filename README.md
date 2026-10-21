@@ -84,6 +84,7 @@ limitup-dashboard/
 
 ## 🔄 每日更新
 
+### 手动
 每个交易日收盘后，在项目根目录执行：
 
 ```bash
@@ -93,8 +94,25 @@ git add data && git commit -m "data: $(date +%F)" && git push
 
 `fetch/limitup.mjs` 会同时刷新 `data/<日期>.json`、`data/index.json`、`data/bundle.js`，提交后 GitHub Pages 自动更新。
 
-> 自动化的 GitHub Actions 工作流未纳入仓库：当前 PAT 只有 `repo` 权限、没有 `workflow` scope，GitHub 会拒绝推送 workflow 文件。若想全自动，请到 GitHub → Settings → Developer settings 重新生成带 `workflow` scope 的 token，再补 `.github/workflows/daily.yml`。海外 runner 访问东财也可能超时，手动执行最稳。
+### 自动（推荐）
+项目已内置 `update-daily.bat`：直连抓取（已清代理）+ 仅在有变更时提交并推送，**幂等**——非交易日或数据无变化自动跳过，不会刷无意义提交。两种自动方式任选：
+
+**方式 A · 本机 Windows 任务计划（最稳，关机/关 WorkBuddy 也能跑）**
+
+在普通命令提示符（非 WorkBuddy 内）粘贴一次即可创建计划任务（工作日 16:30 收盘后）：
+
+```bat
+schtasks /create /tn "LimitUpDashboardDaily" /tr "D:\workbuddy\2026-10-20-21-06-21\limitup-dashboard\update-daily.bat" /sc weekly /d MON,TUE,WED,THU,FRI /st 16:30 /f
+```
+
+> 该命令在本机自带 cmd 里运行，WorkBuddy 沙箱已禁止 `schtasks`（程序黑名单），请到自己电脑的“命令提示符”里执行。
+
+**方式 B · WorkBuddy 自动化（需 WorkBuddy 在 16:30 处于运行态）**
+
+已在 WorkBuddy 创建一个递归自动化「涨停看板每日自动更新」（工作日 16:30，与方式 A 同逻辑）。它会运行同样的抓取+提交+推送。
+
+> 说明：GitHub Actions 工作流未纳入仓库——当前 PAT 只有 `repo` 权限、没有 `workflow` scope，GitHub 会拒绝推送 workflow 文件；且海外 runner 访问东财/同花顺会超时。因此自动更新走本机（本机网络可直连东财/同花顺），而非 GitHub 云端。
 
 ## ⚠️ 免责声明
 
-数据来自东方财富 / 新浪公开行情接口，仅供研究与学习，**不构成任何投资建议**。涨停定义以接口返回为准；盘中数据为快照，可能与收盘略有差异。
+数据来自东方财富 / 同花顺 / 新浪公开行情接口，仅供研究与学习，**不构成任何投资建议**。涨停定义以接口返回为准；盘中数据为快照，可能与收盘略有差异。
